@@ -8,7 +8,7 @@ async function CabinList({ filter }) {
 
   const cabins = await getCabins();
 
-  if (!cabins.length) return;
+  if (!cabins.length) return null;
 
   let displayedCabins;
   if (filter === "all") displayedCabins = cabins;
