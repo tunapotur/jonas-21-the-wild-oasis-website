@@ -1,13 +1,14 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
-const authConfig = {
-  providers: [Google],
-};
+// https://authjs.dev/getting-started/providers/google
+// http://localhost:3000/api/auth/callback/google
 
 export const {
-  auth,
   handlers: { GET, POST },
-} = NextAuth(authConfig);
-
-// https://authjs.dev/getting-started/providers/google
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
+  providers: [Google],
+});
