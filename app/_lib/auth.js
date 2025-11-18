@@ -1,30 +1,13 @@
 import NextAuth from "next-auth";
-// import Google from "next-auth/providers/google";
-import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 
-// const authConfig = {
-//   providers: [
-//     Google({
-//       clientId: process.env.AUTH_GOOGLE_ID,
-//       clientSecret: process.env.AUTH_GOOGLE_SECRET,
-//     }),
-//   ],
-// };
-
-// const authConfig = {
-//   providers: [Google],
-// };
-
-// export const {
-//   auth,
-//   handlers: { GET, POST },
-// } = NextAuth(authConfig);
+const authConfig = {
+  providers: [Google],
+};
 
 export const {
-  handlers: { GET, POST },
   auth,
-  signIn,
-  signOut,
-} = NextAuth({
-  providers: [GitHub],
-});
+  handlers: { GET, POST },
+} = NextAuth(authConfig);
+
+// https://authjs.dev/getting-started/providers/google
