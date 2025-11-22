@@ -1,6 +1,3 @@
-import { handlers } from "@/app/_lib/auth";
-<<<<<<< HEAD
-=======
+import { handlers } from "@/app/auth";
 
->>>>>>> origin/master
 export const { GET, POST } = handlers;
