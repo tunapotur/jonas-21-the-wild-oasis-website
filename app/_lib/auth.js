@@ -5,6 +5,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
 });
 
+// https://authjs.dev/getting-started/authentication/oauth
 // https://www.youtube.com/watch?v=XQbiMiNah0o&t=434s
 // https://authjs.dev/getting-started/providers/google
 // http://localhost:3000/api/auth/callback/google
