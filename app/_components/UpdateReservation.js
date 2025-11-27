@@ -21,10 +21,10 @@ function UpdateReservation({ bookingDetail, maxCapacity }) {
         <select
           name="numGuests"
           id="numGuests"
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:bg-gray-500 disabled:text-gray-300"
+          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:bg-gray-500 disabled:text-gray-300 disabled:cursor-not-allowed"
           required
           defaultValue={bookingDetail.numGuests}
-          disabled={true}
+          disabled={isPending}
         >
           <option value="" key="">
             Select number of guests...
@@ -43,19 +43,19 @@ function UpdateReservation({ bookingDetail, maxCapacity }) {
         </label>
         <textarea
           name="observations"
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:bg-gray-500 disabled:text-gray-300"
+          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed"
           defaultValue={bookingDetail.observations}
-          disabled={true}
+          disabled={isPending}
         />
       </div>
 
       <div className="flex justify-end items-center gap-6">
         <button
-          className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-          disabled={true}
+          className="bg-accent-500 px-8 py-4  text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-400 w-64 flex flex-row items-center justify-center"
+          disabled={isPending}
         >
-          {true ? (
-            <div className="flex flex-row">
+          {isPending ? (
+            <div className="flex flex-row items-center gap-3">
               <SpinnerMini />
               <span>Updating...</span>
             </div>
