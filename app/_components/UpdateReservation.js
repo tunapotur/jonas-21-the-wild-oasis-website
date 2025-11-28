@@ -1,14 +1,14 @@
 "use client";
 
 import { useTransition } from "react";
-import { updateReservation } from "@/app/_lib/actions";
+import { updateBooking } from "@/app/_lib/actions";
 import SpinnerMini from "./SpinnerMini";
 
 function UpdateReservation({ bookingDetail, maxCapacity }) {
   const [isPending, startTransition] = useTransition();
 
   function handleUpdate(formData) {
-    startTransition(() => updateReservation(bookingDetail.id, formData));
+    startTransition(() => updateBooking(bookingDetail.id, formData));
   }
 
   return (

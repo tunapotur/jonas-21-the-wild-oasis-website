@@ -5,18 +5,18 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export function generateMetadata({ params }) {
-  return { title: `Edit Reservation ${params.reservationId}` };
+  return { title: `Edit Reservation ${params.bookingId}` };
 }
 
 export default async function Page({ params }) {
   const session = await auth();
   if (!session) redirect("/account");
 
-  const reservationId = parseInt(params.reservationId, 10);
+  const bookingId = Number(params.bookingId);
   const guestBookings = await getBookings(session.user.guestId);
   const guestBookingsIds = guestBookings.map((booking) => booking.id);
 
-  if (!guestBookingsIds.includes(reservationId))
+  if (!guestBookingsIds.includes(bookingId))
     return (
       <main className="text-center space-y-6 mt-4">
         <h1 className="text-3xl font-semibold">
@@ -31,14 +31,13 @@ export default async function Page({ params }) {
       </main>
     );
 
-  const bookingDetail = await getBooking(reservationId);
-  const cabin = await getCabin(bookingDetail.cabinId);
-  const maxCapacity = cabin.maxCapacity;
+  const bookingDetail = await getBooking(bookingId);
+  const { maxCapacity } = await getCabin(bookingDetail.cabinId);
 
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-7">
-        Edit Reservation #{bookingDetail.id}
+        Edit Reservation #{bookingId}
       </h2>
 
       <UpdateReservation
