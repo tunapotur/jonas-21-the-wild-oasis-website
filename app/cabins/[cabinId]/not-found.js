@@ -7,10 +7,10 @@ function NotFound() {
         This cabin could not be found :(
       </h1>
       <Link
-        href="/account/reservations"
+        href="/cabins"
         className="inline-block bg-accent-500 text-primary-800 px-6 py-3 text-lg"
       >
-        Back to reservation
+        Back to all cabins
       </Link>
     </main>
   );
